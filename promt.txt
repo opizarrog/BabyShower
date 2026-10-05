@@ -1,0 +1,487 @@
+Quiero que diseñes y desarrolles una página web interactiva, elegante, emotiva y moderna para una invitación digital de Baby Shower.
+
+La página debe sentirse como una pequeña experiencia digital, no como una simple tarjeta de invitación. Quiero que sea sorprendente, dinámica, cálida y memorable, pero sin caer en un diseño infantil excesivamente cargado.
+
+INFORMACIÓN DEL EVENTO
+
+Futuros padres:
+Oscar y Gaby
+
+Nombre del bebé:
+Samuel
+
+Fecha:
+8 de noviembre de 2026
+
+Hora:
+14:00
+
+Lugar:
+Bressol Artes, sector Campus BALSAY
+
+Dirección:
+Rafael Fajardo y Víctor Manuel Albornoz
+
+Fecha límite para confirmar asistencia:
+25 de octubre de 2026
+
+WhatsApp para confirmaciones:
+0963151616
+
+CONCEPTO CREATIVO
+
+Quiero que tengas libertad creativa para sorprenderme con el diseño.
+
+La temática debe girar alrededor de la llegada de Samuel, transmitiendo:
+
+ternura
+
+ilusión
+
+familia
+
+expectativa
+
+alegría
+
+una sensación de "estamos esperando conocerte"
+
+Evita que parezca una plantilla genérica de baby shower.
+
+Quiero una estética moderna, sofisticada y delicada, con ilustraciones y animaciones sutiles.
+
+Puedes combinar elementos como:
+
+nubes
+
+estrellas
+
+luna
+
+pequeños animalitos
+
+globos
+
+elementos relacionados con bebés
+
+partículas suaves
+
+ilustraciones orgánicas
+
+formas flotantes
+
+No es necesario utilizar todos estos elementos. Elige los que mejor funcionen con el concepto visual.
+
+La paleta de colores debe ser armoniosa y elegante. Puedes utilizar tonos pastel, crema, beige, azul suave, verde salvia, dorado tenue u otros colores que consideres adecuados.
+
+EXPERIENCIA INICIAL
+
+Al entrar a la página quiero una primera pantalla impactante.
+
+Mostrar algo similar a:
+
+"Samuel está por llegar..."
+
+y debajo:
+
+"Oscar & Gaby quieren compartir contigo este momento tan especial."
+
+Debe existir un botón:
+
+"Descubrir invitación"
+
+Al hacer clic, debe comenzar una transición elegante hacia la invitación.
+
+Si agregas música, debe comenzar únicamente después de una interacción del usuario y debe existir siempre un botón visible para activar/desactivar el sonido.
+
+ANIMACIONES
+
+La página debe tener animaciones suaves y modernas.
+
+Quiero utilizar:
+
+elementos que aparezcan progresivamente al hacer scroll
+
+pequeñas partículas o estrellas flotando
+
+transiciones suaves
+
+efectos de parallax muy sutiles
+
+tarjetas que aparezcan con movimiento
+
+botones con microinteracciones
+
+pequeñas animaciones al confirmar asistencia
+
+transiciones entre secciones
+
+Las animaciones deben sentirse premium.
+
+NO quiero exceso de movimiento ni efectos que hagan lenta o incómoda la navegación.
+
+La página debe funcionar perfectamente en teléfonos celulares.
+
+CUENTA REGRESIVA
+
+Crear una sección destacada:
+
+"Falta poquito para conocer a Samuel"
+
+Mostrar una cuenta regresiva dinámica hasta:
+
+8 de noviembre de 2026, 14:00
+
+Mostrar:
+
+Días
+Horas
+Minutos
+Segundos
+
+Cuando llegue la fecha, la cuenta regresiva debe cambiar automáticamente por un mensaje especial.
+
+SECCIÓN DE LOS FUTUROS PADRES
+
+Crear una sección emocional para Oscar y Gaby.
+
+Texto sugerido:
+
+"Hay momentos que cambian nuestra vida para siempre..."
+
+Continuar con un pequeño mensaje sobre la emoción de esperar a Samuel.
+
+No inventes información personal sobre ellos.
+
+Puedes redactar un texto breve, emotivo y elegante utilizando únicamente la información proporcionada.
+
+DETALLES DEL EVENTO
+
+Crear una sección visual con tarjetas para:
+
+📅 Fecha
+8 de noviembre de 2026
+
+⏰ Hora
+14:00
+
+📍 Lugar
+Bressol Artes
+Sector Campus BALSAY
+
+📌 Dirección
+Rafael Fajardo y Víctor Manuel Albornoz
+
+Agregar un botón:
+
+"Cómo llegar"
+
+Este botón debe permitir abrir la ubicación en Google Maps.
+
+No inventes coordenadas.
+
+CONFIRMACIÓN DE ASISTENCIA
+
+Esta debe ser una de las secciones más importantes de la página.
+
+Título:
+
+"¿Nos acompañas?"
+
+Texto:
+
+"Queremos compartir este día contigo. Cuéntanos si podremos contar con tu presencia."
+
+Crear un formulario sencillo y bonito con:
+
+Nombre del invitado
+
+¿Asistirás?
+
+Sí, ahí estaré 💛
+
+No podré asistir
+
+Si responde que sí:
+
+¿Vendrás con acompañante?
+
+Sí
+
+No
+
+Si selecciona "Sí":
+
+Nombre del acompañante
+
+Mostrar finalmente:
+
+"Confirmar asistencia"
+
+GOOGLE SHEETS
+
+Quiero que las respuestas del formulario puedan almacenarse automáticamente en Google Sheets.
+
+Diseña la solución para que sea fácil conectar el formulario con Google Sheets mediante una integración segura, por ejemplo Google Apps Script o un webhook.
+
+No expongas credenciales, API keys ni información sensible en el frontend.
+
+La hoja debería guardar como mínimo:
+
+Fecha/hora de respuesta
+
+Nombre del invitado
+
+Asistencia
+
+¿Lleva acompañante?
+
+Nombre del acompañante
+
+Número total de asistentes
+
+Después de enviar el formulario mostrar una confirmación bonita:
+
+"¡Gracias! 💛
+Nos alegra mucho saber que compartirás este momento con nosotros."
+
+Si la persona indica que no puede asistir, mostrar un mensaje diferente y amable.
+
+WHATSAPP
+
+También quiero ofrecer una alternativa para confirmar por WhatsApp.
+
+Crear un botón:
+
+"Confirmar por WhatsApp"
+
+Utilizar el número:
+
+0963151616
+
+El enlace debe abrir WhatsApp con un mensaje prellenado, por ejemplo:
+
+"Hola Oscar y Gaby 😊 Soy [NOMBRE]. Quiero confirmar mi asistencia al Baby Shower de Samuel."
+
+Si la persona indicó que lleva acompañante, incluir esa información en el mensaje.
+
+No mostrar el número de WhatsApp de manera invasiva; utilizarlo principalmente mediante el botón.
+
+SECCIÓN DE DESEOS / REGALOS
+
+Esta sección es MUY IMPORTANTE.
+
+NO quiero que parezca una lista de regalos obligatoria.
+
+No utilizar títulos como:
+
+"Lista de regalos obligatoria"
+
+"Debes traer"
+
+"Regalos"
+
+Quiero presentarlo de una forma mucho más delicada.
+
+Título sugerido:
+
+"Un detalle para Samuel 💛"
+
+Texto:
+
+"Si quieres tener un detalle con Samuel, hemos preparado algunas ideas que podrían sernos útiles en esta nueva etapa. No es compromiso ni obligación; cualquier detalle, grande o pequeño, será recibido con muchísimo cariño."
+
+La sección debe dejar claro que los invitados son completamente libres de elegir si desean llevar algo.
+
+Crear tarjetas o categorías interactivas para mostrar sugerencias como:
+
+👶 Pañales
+🧴 Productos para bebé
+👕 Ropita
+🛁 Artículos para el baño
+🍼 Accesorios para alimentación
+🧸 Juguetes
+💛 Algo elegido por ti
+
+Las tarjetas pueden expandirse al hacer clic y mostrar ejemplos.
+
+IMPORTANTE:
+
+No inventes marcas, tallas específicas, cantidades ni productos que los padres no hayan indicado.
+
+Deja la estructura preparada para que posteriormente podamos modificar o agregar las sugerencias.
+
+La sección debe sentirse como:
+
+"Estas son algunas ideas por si te sirven"
+
+y nunca como:
+
+"Esto es lo que esperamos que nos regales".
+
+GALERÍA
+
+Crear una sección preparada para fotografías.
+
+Título:
+
+"Esperando a Samuel"
+
+Permitir una galería elegante donde posteriormente puedan agregarse fotografías de Oscar y Gaby.
+
+Si todavía no existen fotografías, utilizar placeholders elegantes y claramente identificables para poder reemplazarlas posteriormente.
+
+No inventar fotografías de personas reales.
+
+CIERRE
+
+Crear una sección final emocional.
+
+Texto sugerido:
+
+"Lo más bonito de este día será compartirlo contigo."
+
+"Gracias por acompañarnos en la llegada de Samuel."
+
+Finalizar con:
+
+"Con cariño,
+Oscar & Gaby"
+
+Agregar nuevamente un botón:
+
+"Confirmar asistencia"
+
+DISEÑO RESPONSIVE
+
+La página debe estar diseñada principalmente pensando en teléfonos celulares.
+
+Debe funcionar correctamente en:
+
+teléfonos
+
+tablets
+
+computadoras
+
+La experiencia móvil debe ser prioritaria.
+
+Los botones deben ser grandes y fáciles de tocar.
+
+La tipografía debe ser legible.
+
+Evitar elementos demasiado pequeños.
+
+NAVEGACIÓN
+
+No quiero un menú tradicional grande.
+
+Prefiero una navegación elegante y discreta.
+
+Puede utilizarse un menú flotante o navegación por secciones.
+
+La página debe sentirse como una historia que el usuario va descubriendo mientras hace scroll.
+
+DETALLES TÉCNICOS
+
+Construye el proyecto con código limpio, modular y fácil de modificar.
+
+Separar claramente:
+
+datos del evento
+
+textos
+
+configuración visual
+
+lista de deseos
+
+configuración de WhatsApp
+
+integración de Google Sheets
+
+No colocar información sensible directamente en componentes innecesarios.
+
+Preparar variables fáciles de modificar posteriormente.
+
+Optimizar imágenes y animaciones para que la página cargue rápido.
+
+Agregar estados de carga y mensajes de error amigables para el formulario.
+
+Validar correctamente los campos antes de enviar.
+
+Evitar enviar dos veces el mismo formulario por accidente.
+
+IMPORTANTE SOBRE EL DISEÑO
+
+No quiero que simplemente construyas una página con bloques de información.
+
+Quiero que pienses como un diseñador UX/UI y director creativo.
+
+La experiencia debería sentirse aproximadamente así:
+
+"Abro la invitación → descubro que Samuel está por llegar → veo la cuenta regresiva → conozco los detalles → descubro pequeños elementos interactivos → confirmo mi asistencia → veo las sugerencias de detalles → termino con un mensaje emotivo."
+
+Debe existir una narrativa visual.
+
+Usa creatividad propia para decidir:
+
+tipografías
+
+composición
+
+colores
+
+ilustraciones
+
+animaciones
+
+transiciones
+
+formas
+
+distribución de las secciones
+
+Pero mantén siempre una estética elegante, cálida y sofisticada.
+
+No sobrecargues la página.
+
+RESULTADO ESPERADO
+
+Quiero una invitación que cuando alguien la reciba piense:
+
+"Qué bonita y diferente está esta invitación."
+
+Debe sentirse personalizada para Samuel, Oscar y Gaby.
+
+La página debe ser funcional, responsive, rápida, accesible y visualmente memorable.
+
+Antes de finalizar, verifica que:
+
+la fecha sea 8 de noviembre de 2026
+
+la hora sea 14:00
+
+la fecha límite de confirmación sea 25 de octubre de 2026
+
+el nombre del bebé sea Samuel
+
+los padres sean Oscar y Gaby
+
+el lugar sea Bressol Artes, sector Campus BALSAY
+
+la dirección sea Rafael Fajardo y Víctor Manuel Albornoz
+
+el WhatsApp sea 0963151616
+
+el formulario permita confirmar asistencia
+
+el formulario permita indicar acompañante
+
+exista una estructura preparada para guardar las respuestas en Google Sheets
+
+exista una sección de deseos presentada como sugerencias y no como obligación
+
+toda la experiencia funcione correctamente en dispositivos móviles
+
+No inventes datos personales que no hayan sido proporcionados.

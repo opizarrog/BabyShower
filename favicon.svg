@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="balloon" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#d5e1da"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 5C18 5 9 16 9 29c0 12 9 21 20 25l3 5 3-5c11-4 20-13 20-25C55 16 46 5 32 5Z" fill="url(#balloon)" stroke="#bca78e" stroke-width="2"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Georgia,serif" font-size="30" font-weight="700" fill="#2f3d48">S</text>
+  <path d="m51 6 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z" fill="#c39b63"/>
+  <path d="M32 59v4" stroke="#9a8063" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

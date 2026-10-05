@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Invitación digital para el Baby Shower de Oscar y Gaby con motivo de la llegada de Samuel."
+    />
+    <title>Samuel está por llegar</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="page-shell">
+      <div class="bg-orb orb-1"></div>
+      <div class="bg-orb orb-2"></div>
+      <div class="bg-orb orb-3"></div>
+      <div class="starfield" aria-hidden="true"></div>
+
+      <header class="hero" id="top">
+        <nav class="topbar" aria-label="Navegación principal">
+          <a href="#top" class="brand-mark" aria-label="Volver al inicio">
+            <span class="brand-balloon">S</span>
+            <span class="brand-knot" aria-hidden="true"></span>
+            <span class="brand-sparkle" aria-hidden="true">✦</span>
+          </a>
+          <a href="#rsvp" class="nav-link">Confirmar asistencia <span aria-hidden="true">↗</span></a>
+        </nav>
+
+        <div class="hero-content reveal">
+          <p class="eyebrow">Bienvenidos a este momento tan especial</p>
+          <h1>Samuel está por llegar...</h1>
+          <p class="subtitle">
+            Oscar &amp; Gaby quieren compartir contigo este momento tan especial.
+          </p>
+          <button class="primary-button" id="discoverBtn" type="button">
+            Descubrir invitación
+          </button>
+        </div>
+
+        <div class="hero-illustration reveal" aria-hidden="true">
+          <div class="moon" data-base-transform="none"></div>
+          <div class="cloud cloud-left" data-base-transform="none"></div>
+          <div class="cloud cloud-right" data-base-transform="none"></div>
+          <div class="floating-card card-name" data-base-transform="rotate(-8deg)">
+            <span>Samuel</span>
+          </div>
+          <div class="floating-card card-baby" data-base-transform="rotate(10deg)">
+            <span>💛</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="countdown-section reveal" aria-labelledby="countdown-heading">
+          <div class="section-heading">
+            <p class="eyebrow subtle">Cuenta regresiva</p>
+            <h2 id="countdown-heading">Falta poquito para conocer a Samuel</h2>
+          </div>
+
+          <div class="countdown" id="countdown" aria-live="polite">
+            <div class="time-box">
+              <span class="time-value" id="days">00</span>
+              <span class="time-label">Días</span>
+            </div>
+            <div class="time-box">
+              <span class="time-value" id="hours">00</span>
+              <span class="time-label">Horas</span>
+            </div>
+            <div class="time-box">
+              <span class="time-value" id="minutes">00</span>
+              <span class="time-label">Minutos</span>
+            </div>
+            <div class="time-box">
+              <span class="time-value" id="seconds">00</span>
+              <span class="time-label">Segundos</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="story-section reveal" aria-labelledby="story-heading">
+          <div class="story-text-wrap">
+            <p class="eyebrow subtle">Los futuros papás</p>
+            <h2 id="story-heading">Hay momentos que cambian nuestra vida para siempre...</h2>
+            <p>
+              Y este es uno de esos instantes que nos llena de ternura, sorpresa y
+              emoción. Estamos esperando con el corazón abierto la llegada de Samuel,
+              sabiendo que el amor ya está creciendo en cada detalle y en cada mirada.
+            </p>
+            <p>
+              Con ilusión, familia y alegría, queremos compartir contigo este momento tan
+              especial que comienza a iluminar nuestras vidas.
+            </p>
+          </div>
+          <div class="mini-portrait" aria-hidden="true">
+            <div class="portrait-frame">
+              <div class="portrait-pair">
+                <span class="heart heart-left">♥</span>
+                <span class="heart heart-right">♥</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ultrasound-section reveal" aria-labelledby="ultrasound-heading">
+          <div class="ultrasound-copy">
+            <p class="eyebrow subtle">Una primera mirada</p>
+            <h2 id="ultrasound-heading">Samuel ya empieza a llenar nuestros días de amor</h2>
+            <p>Un pequeño recuerdo de este momento tan especial, mientras esperamos conocerte.</p>
+          </div>
+          <figure class="ultrasound-frame">
+            <img
+              id="ultrasoundImage"
+              class="ultrasound-image hidden"
+              src="ecografia-samuel.jpg"
+              alt="Ecografía de Samuel"
+            />
+            <div class="ultrasound-placeholder" id="ultrasoundPlaceholder" aria-hidden="true">
+              <span class="ultrasound-icon">♡</span>
+              <span class="ultrasound-placeholder-title">Nuestra primera foto</span>
+              <span class="ultrasound-placeholder-hint">Agrega ecografia-samuel.jpg a la carpeta del sitio</span>
+            </div>
+            <figcaption>Contando los días para tenerte en nuestros brazos</figcaption>
+          </figure>
+        </section>
+
+        <section class="details-section reveal" aria-labelledby="details-heading">
+          <div class="section-heading center">
+            <p class="eyebrow subtle">Detalles del evento</p>
+            <h2 id="details-heading">Te esperamos</h2>
+          </div>
+
+          <div class="detail-grid">
+            <article class="info-card">
+              <div class="icon">📅</div>
+              <span class="label">Fecha</span>
+              <strong>8 de noviembre de 2026</strong>
+            </article>
+
+            <article class="info-card">
+              <div class="icon">⏰</div>
+              <span class="label">Hora</span>
+              <strong>14:00</strong>
+            </article>
+
+            <article class="info-card">
+              <div class="icon">📍</div>
+              <span class="label">Lugar</span>
+              <strong>Bressol Artes</strong>
+              <small>Sector Campus BALSAY</small>
+            </article>
+
+            <article class="info-card">
+              <div class="icon">📌</div>
+              <span class="label">Dirección</span>
+              <strong>Rafael Fajardo y Víctor Manuel Albornoz</strong>
+            </article>
+          </div>
+
+          <div class="map-action">
+            <a
+              class="secondary-button"
+              href="https://www.google.com/maps/search/?api=1&query=Bressol+Artes+Sector+Campus+BALSAY+Rafael+Fajardo+y+Victor+Manuel+Albornoz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar
+            </a>
+          </div>
+        </section>
+
+        <section class="rsvp-section reveal" id="rsvp" aria-labelledby="rsvp-heading">
+          <div class="section-heading center narrow">
+            <p class="eyebrow subtle">Tu respuesta</p>
+            <h2 id="rsvp-heading">¿Nos acompañas?</h2>
+          </div>
+
+          <p class="rsvp-intro">
+            Queremos compartir este día contigo. Cuéntanos si podremos contar con tu
+            presencia.
+          </p>
+
+          <form id="rsvpForm" class="rsvp-form" novalidate>
+            <div class="field-group">
+              <label for="guestName">Nombre del invitado</label>
+              <input id="guestName" name="guestName" type="text" placeholder="Tu nombre" required />
+            </div>
+
+            <fieldset class="choice-group">
+              <legend>¿Asistirás?</legend>
+              <label class="option-card">
+                <input type="radio" name="attendance" value="yes" required />
+                <span>Sí, ahí estaré 💛</span>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="attendance" value="no" />
+                <span>No podré asistir</span>
+              </label>
+            </fieldset>
+
+            <div id="companionWrap" class="hidden">
+              <fieldset class="choice-group">
+                <legend>¿Vendrás con acompañante?</legend>
+                <label class="option-card">
+                  <input type="radio" name="withCompanion" value="yes" />
+                  <span>Sí</span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="withCompanion" value="no" />
+                  <span>No</span>
+                </label>
+              </fieldset>
+
+              <div id="companionNameWrap" class="field-group hidden">
+                <label for="companionName">Nombre del acompañante</label>
+                <input id="companionName" name="companionName" type="text" placeholder="Nombre del acompañante" />
+              </div>
+            </div>
+
+            <button type="submit" class="primary-button submit-btn">Confirmar asistencia</button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer reveal">
+        <p>Con mucho cariño, Oscar &amp; Gaby</p>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      window.GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwtEvZdzmbJYrm6rm4Va3YMzFEtA4RzfKvIFDlBg3L760Do9x8Wsy5_2CB760oh9sjm/exec';
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
