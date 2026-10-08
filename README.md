@@ -89,6 +89,10 @@ Crea la carpeta `fotos` junto a `index.html` y guarda allí las doce imágenes c
 
 La página muestra un espacio de reemplazo para cada imagen que todavía no esté disponible. Las fotos se pueden agregar en cualquier momento, sin modificar el formulario ni el código de almacenamiento.
 
+## Proteger y consultar respuestas RSVP
+
+La invitación consulta el RSVP por token y registra la respuesta de forma atómica mediante funciones de Supabase. Ejecuta una sola vez el contenido de [`supabase-rsvp-guards.sql`](./supabase-rsvp-guards.sql) en el SQL Editor del proyecto Supabase. Así, si ya hay un RSVP asociado al invitado, se oculta el formulario al abrir el enlace; la función de registro también evita respuestas duplicadas desde otros navegadores.
+
 ## Ejecutar localmente
 
 ```bash

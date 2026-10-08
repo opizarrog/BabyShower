@@ -7,6 +7,10 @@ const secondsEl = document.getElementById('seconds');
 const discoverBtn = document.getElementById('discoverBtn');
 const toastEl = document.getElementById('toast');
 const rsvpForm = document.getElementById('rsvpForm');
+const guestNameDisplay = document.getElementById('guestNameDisplay');
+const guestGreeting = document.getElementById('guestGreeting');
+const guestCapacity = document.getElementById('guestCapacity');
+const guestStatus = document.getElementById('guestStatus');
 const attendanceInputs = document.querySelectorAll('input[name="attendance"]');
 const companionWrap = document.getElementById('companionWrap');
 const companionNameWrap = document.getElementById('companionNameWrap');
@@ -14,7 +18,11 @@ const companionInputs = document.querySelectorAll('input[name="withCompanion"]')
 const ultrasoundImage = document.getElementById('ultrasoundImage');
 const ultrasoundPlaceholder = document.getElementById('ultrasoundPlaceholder');
 
-const GOOGLE_SHEETS_WEBHOOK_URL = window.GOOGLE_SHEETS_WEBHOOK_URL || '';
+const SUPABASE_URL = 'https://echlxupvtvfuxomahydh.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_VnFWOxjhTbMtCDZb7Wa2jg_GOy4tdaT';
+const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentGuest = null;
+let currentGuestToken = null;
 
 function padNumber(value) {
   return String(value).padStart(2, '0');
@@ -121,7 +129,10 @@ window.addEventListener('scroll', () => {
 
 function toggleCompanionFields() {
   const selected = document.querySelector('input[name="attendance"]:checked');
-  const shouldShow = selected && selected.value === 'yes';
+  const shouldShow = currentGuest
+    && currentGuest.maxGuests > 1
+    && selected
+    && selected.value === 'yes';
   companionWrap.classList.toggle('hidden', !shouldShow);
 
   if (!shouldShow) {
@@ -138,6 +149,115 @@ attendanceInputs.forEach((input) => {
   input.addEventListener('change', toggleCompanionFields);
 });
 
+function setGuestStatus(message) {
+  guestStatus.textContent = message;
+  guestStatus.classList.remove('hidden');
+}
+
+function showExistingResponseMessage() {
+  rsvpForm.classList.add('hidden');
+  setGuestStatus('Ya registramos tu respuesta. Si necesitas realizar algún cambio, comunícate con los organizadores.');
+}
+
+function normalizeGuest(data) {
+  const record = Array.isArray(data) ? data[0] : data;
+  if (
+    !record
+    || record.id === undefined
+    || typeof record.name !== 'string'
+    || !Number.isInteger(Number(record.max_guests))
+    || Number(record.max_guests) < 1
+  ) {
+    return null;
+  }
+
+  return {
+    id: record.id,
+    name: record.name,
+    maxGuests: Number(record.max_guests),
+    active: record.active
+  };
+}
+
+async function loadGuestInvitation() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('i');
+
+  if (!token) {
+    setGuestStatus('Para confirmar tu asistencia, utiliza el enlace personalizado que recibiste.');
+    return;
+  }
+
+  if (!supabaseClient) {
+    setGuestStatus('No pudimos conectar con el servicio de invitaciones. Inténtalo nuevamente más tarde.');
+    return;
+  }
+
+  guestGreeting.textContent = 'Estamos verificando tu invitación...';
+  guestStatus.classList.add('hidden');
+
+  const { data, error } = await supabaseClient.rpc('get_guest_by_token', {
+    p_token: token
+  });
+
+  if (error) {
+    console.error(error);
+    guestGreeting.textContent = '';
+    setGuestStatus('No pudimos verificar tu invitación. Inténtalo nuevamente más tarde.');
+    return;
+  }
+
+  currentGuest = normalizeGuest(data);
+  if (!currentGuest) {
+    guestGreeting.textContent = '';
+    setGuestStatus('Esta invitación no es válida o ya no está disponible. Si tienes alguna duda, comunícate con los organizadores.');
+    return;
+  }
+
+  if (currentGuest.active === false) {
+    guestGreeting.textContent = '';
+    setGuestStatus('Esta invitación ya no está disponible. Si tienes alguna duda, comunícate con los organizadores.');
+    return;
+  }
+
+  currentGuestToken = token;
+  guestNameDisplay.textContent = currentGuest.name;
+  guestNameDisplay.classList.remove('hidden');
+
+  const { data: hasResponded, error: responseCheckError } = await supabaseClient.rpc(
+    'has_guest_responded',
+    { p_token: token }
+  );
+
+  if (responseCheckError) {
+    console.error(responseCheckError);
+    guestGreeting.textContent = '';
+    setGuestStatus('No pudimos comprobar si tu respuesta ya está registrada. Inténtalo nuevamente más tarde.');
+    return;
+  }
+
+  if (typeof hasResponded !== 'boolean') {
+    guestGreeting.textContent = '';
+    setGuestStatus('No pudimos comprobar si tu respuesta ya está registrada. Inténtalo nuevamente más tarde.');
+    return;
+  }
+
+  if (hasResponded) {
+    showExistingResponseMessage();
+    return;
+  }
+
+  const supportedGuestCount = Math.min(currentGuest.maxGuests, 2);
+  guestGreeting.textContent = 'Nos encantaría contar contigo para celebrar la llegada de Samuel.';
+  guestGreeting.classList.remove('hidden');
+  guestCapacity.textContent = supportedGuestCount === 1
+    ? 'Tu invitación está reservada para 1 persona.'
+    : 'Tu invitación contempla hasta 2 personas: tú y 1 acompañante.';
+  guestCapacity.classList.remove('hidden');
+  companionWrap.classList.toggle('hidden', supportedGuestCount < 2);
+  rsvpForm.classList.remove('hidden');
+}
+
 function toggleCompanionNameField() {
   const selectedCompanion = document.querySelector('input[name="withCompanion"]:checked');
   const shouldShow = selectedCompanion && selectedCompanion.value === 'yes';
@@ -149,15 +269,23 @@ companionInputs.forEach((input) => {
 });
 
 function validateForm(formData) {
-  if (!formData.guestName.trim()) {
-    return 'Por favor, escribe tu nombre.';
-  }
-
   if (!formData.attendance) {
     return 'Selecciona si podrás asistir o no.';
   }
 
-  if (formData.attendance === 'yes' && formData.withCompanion === 'yes' && !formData.companionName.trim()) {
+  if (
+    formData.attendance === 'yes'
+    && currentGuest.maxGuests > 1
+    && !formData.withCompanion
+  ) {
+    return 'Indica si vendrás con acompañante.';
+  }
+
+  if (
+    formData.attendance === 'yes'
+    && formData.withCompanion === 'yes'
+    && !formData.companionName.trim()
+  ) {
     return 'Indica el nombre del acompañante.';
   }
 
@@ -165,30 +293,47 @@ function validateForm(formData) {
 }
 
 async function submitGuestResponse(payload) {
-  if (!GOOGLE_SHEETS_WEBHOOK_URL) {
-    const saved = JSON.parse(localStorage.getItem('baby-shower-rsvps') || '[]');
-    saved.push(payload);
-    localStorage.setItem('baby-shower-rsvps', JSON.stringify(saved));
-    return { ok: true, localOnly: true };
-  }
-
-  const body = new URLSearchParams(payload);
-  await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    body
+  const { data: result, error } = await supabaseClient.rpc('register_guest_rsvp', {
+    p_token: currentGuestToken,
+    p_attendance: payload.attendance,
+    p_with_companion: payload.withCompanion,
+    p_companion_name: payload.companionName
   });
 
-  return { ok: true, localOnly: false };
+  if (error) {
+    throw error;
+  }
+
+  if (result === 'already_responded') {
+    showExistingResponseMessage();
+    return false;
+  }
+
+  if (result === 'invalid_invitation') {
+    rsvpForm.classList.add('hidden');
+    setGuestStatus('Esta invitación ya no está disponible. Si tienes alguna duda, comunícate con los organizadores.');
+    return false;
+  }
+
+  if (result !== 'registered') {
+    throw new Error(`Unexpected RSVP registration result: ${result}`);
+  }
+
+  return true;
 }
 
 rsvpForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  if (!currentGuest) {
+    setGuestStatus('Para confirmar tu asistencia, utiliza el enlace personalizado que recibiste.');
+    rsvpForm.classList.add('hidden');
+    return;
+  }
+
   const formData = {
-    guestName: document.getElementById('guestName').value.trim(),
     attendance: document.querySelector('input[name="attendance"]:checked')?.value || '',
-    withCompanion: document.querySelector('input[name="withCompanion"]:checked')?.value || '',
+    withCompanion: document.querySelector('input[name="withCompanion"]:checked')?.value || 'no',
     companionName: document.getElementById('companionName').value.trim(),
     timestamp: new Date().toISOString()
   };
@@ -205,27 +350,25 @@ rsvpForm.addEventListener('submit', async (event) => {
   submitButton.textContent = 'Enviando...';
 
   try {
-    const result = await submitGuestResponse(formData);
-    const message = result.localOnly
-      ? '¡Gracias! Tu respuesta quedó guardada en este dispositivo y está lista para conectarse a Google Sheets.'
-      : '¡Gracias! Tu confirmación fue registrada.';
-
-    showToast(message);
-    rsvpForm.reset();
-    toggleCompanionFields();
-    companionNameWrap.classList.add('hidden');
+    const saved = await submitGuestResponse(formData);
+    if (saved) {
+      const message = formData.attendance === 'yes'
+        ? `¡Gracias, ${currentGuest.name}! Tu asistencia quedó registrada. 💛`
+        : `Gracias por avisarnos, ${currentGuest.name}. Te tendremos presente con mucho cariño. 💛`;
+      rsvpForm.classList.add('hidden');
+      setGuestStatus(message);
+    }
   } catch (error) {
     console.error(error);
-    showToast('Hubo un problema al confirmar tu asistencia. Inténtalo de nuevo.');
+    setGuestStatus('Hubo un problema al confirmar tu asistencia. Inténtalo de nuevo.');
   } finally {
     submitButton.disabled = false;
     submitButton.textContent = originalText;
   }
 });
 
-if (localStorage.getItem('baby-shower-rsvps')) {
-  const savedLength = JSON.parse(localStorage.getItem('baby-shower-rsvps') || '[]').length;
-  if (savedLength > 0) {
-    console.info(`${savedLength} respuestas locales guardadas para sincronizar.`);
-  }
-}
+loadGuestInvitation().catch((error) => {
+  console.error(error);
+  guestGreeting.textContent = '';
+  setGuestStatus('No pudimos verificar tu invitación. Inténtalo nuevamente más tarde.');
+});

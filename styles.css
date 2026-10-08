@@ -916,6 +916,15 @@ h2 {
   line-height: 1.8;
 }
 
+.guest-name {
+  margin: 0 auto 8px;
+  color: var(--navy);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 600;
+  text-align: center;
+}
+
 .rsvp-form {
   max-width: 660px;
   margin: 0 auto;

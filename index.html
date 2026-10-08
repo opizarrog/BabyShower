@@ -352,17 +352,12 @@
             <h2 id="rsvp-heading">¿Nos acompañas?</h2>
           </div>
 
-          <p class="rsvp-intro">
-            Queremos compartir este día contigo. Cuéntanos si podremos contar con tu
-            presencia.
-          </p>
+          <p class="guest-name hidden" id="guestNameDisplay"></p>
+          <p class="rsvp-intro hidden" id="guestGreeting"></p>
+          <p class="rsvp-intro hidden" id="guestCapacity"></p>
+          <p class="rsvp-intro hidden" id="guestStatus" role="status" aria-live="polite"></p>
 
-          <form id="rsvpForm" class="rsvp-form" novalidate>
-            <div class="field-group">
-              <label for="guestName">Nombre del invitado</label>
-              <input id="guestName" name="guestName" type="text" placeholder="Tu nombre" required />
-            </div>
-
+          <form id="rsvpForm" class="rsvp-form hidden" novalidate>
             <fieldset class="choice-group">
               <legend>¿Asistirás?</legend>
               <label class="option-card">
@@ -404,11 +399,9 @@
       </footer>
     </div>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite">    </div>
 
-    <script>
-      window.GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwtEvZdzmbJYrm6rm4Va3YMzFEtA4RzfKvIFDlBg3L760Do9x8Wsy5_2CB760oh9sjm/exec';
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>
