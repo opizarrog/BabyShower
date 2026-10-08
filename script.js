@@ -1,4 +1,4 @@
-const targetDate = new Date('2026-11-08T14:00:00');
+const targetDate = new Date('2026-12-31T00:00:00');
 const countdownEl = document.getElementById('countdown');
 const daysEl = document.getElementById('days');
 const hoursEl = document.getElementById('hours');
@@ -85,6 +85,19 @@ function showUltrasoundImage() {
 
 ultrasoundImage.addEventListener('load', showUltrasoundImage);
 showUltrasoundImage();
+
+function showFamilyPhoto(image) {
+  if (image.complete && image.naturalWidth > 0) {
+    image.classList.remove('hidden');
+    image.nextElementSibling.classList.add('hidden');
+  }
+}
+
+const familyPhotoImages = document.querySelectorAll('.family-photo-image');
+familyPhotoImages.forEach((image) => {
+  image.addEventListener('load', () => showFamilyPhoto(image));
+  showFamilyPhoto(image);
+});
 
 if (discoverBtn) {
   discoverBtn.addEventListener('click', () => {

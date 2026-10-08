@@ -70,6 +70,25 @@ El formulario envía los campos como datos de formulario (`URLSearchParams`) par
 
 Guarda la imagen en la carpeta principal del sitio con el nombre `ecografia-samuel.jpg`. La sección de ecografía la mostrará automáticamente; también puedes cambiar el nombre/ruta en el atributo `src` de la imagen en `index.html`. La imagen no está incluida todavía, así que se verá un espacio de reemplazo hasta que la agregues.
 
+## Agregar las fotos de Oscar y Gaby
+
+Crea la carpeta `fotos` junto a `index.html` y guarda allí las doce imágenes con estos nombres exactos:
+
+- `fotos/oscar.jpg`
+- `fotos/gaby.jpg`
+- `fotos/oscar-gaby.jpg`
+- `fotos/foto-especial.jpg`
+- `fotos/viaje-moto-01.jpg`
+- `fotos/viaje-moto-02.jpg`
+- `fotos/viaje-moto-03.jpg`
+- `fotos/viaje-moto-04.jpg`
+- `fotos/viaje-moto-05.jpg`
+- `fotos/viaje-moto-06.jpg`
+- `fotos/viaje-moto-07.jpg`
+- `fotos/viaje-moto-08.jpg`
+
+La página muestra un espacio de reemplazo para cada imagen que todavía no esté disponible. Las fotos se pueden agregar en cualquier momento, sin modificar el formulario ni el código de almacenamiento.
+
 ## Ejecutar localmente
 
 ```bash
