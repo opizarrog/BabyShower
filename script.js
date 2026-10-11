@@ -1,4 +1,5 @@
-const targetDate = new Date('2026-12-31T00:00:00');
+// Fecha posible del parto.
+const targetDate = new Date(2026, 11, 31, 14, 0, 0);
 const countdownEl = document.getElementById('countdown');
 const daysEl = document.getElementById('days');
 const hoursEl = document.getElementById('hours');

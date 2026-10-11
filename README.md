@@ -176,9 +176,13 @@ La página muestra cada imagen cuando carga; si falta un archivo, se ve un espac
 
 La lógica de las funciones está en [`supabase-rsvp-guards.sql`](./supabase-rsvp-guards.sql) y en el *SQL Editor* del proyecto Supabase.
 
+### Consultar la lista final de asistentes
+
+Cuando quieras revisar quiénes confirmaron que asistirán, abre [`supabase-lista-final-confirmados.sql`](./supabase-lista-final-confirmados.sql), copia su primera consulta y ejecútala en el *SQL Editor* de Supabase. Devuelve una fila por persona (invitado y acompañante, si corresponde) e indica el total de personas confirmadas. La segunda consulta del archivo resume las invitaciones respondidas y pendientes.
+
 ## Valores configurables
 
-- **Cuenta regresiva:** `targetDate` en `script.js` (actualmente `2026-12-31T00:00:00`; ajústala a la fecha del evento).
+- **Cuenta regresiva:** toma la fecha y hora actual del dispositivo cada segundo y cuenta hasta el 15 de noviembre de 2026 a las 14:00, hora local. Si cambia la fecha del evento, actualiza `targetDate` en `script.js`.
 - **Detalles del evento** (fecha, hora, lugar, dirección y botón de mapa): sección de detalles en `index.html`.
 
 ## Ejecutar localmente

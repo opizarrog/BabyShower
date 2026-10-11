@@ -43,3 +43,8 @@ order by id;
 -- 5) Para PRODUCCIÓN usa tokens largos y aleatorios (requiere la extensión pgcrypto):
 -- insert into public.guests (name, token, max_guests, active)
 -- values ('Nombre Oficial', encode(gen_random_bytes(8), 'hex'), 1, true);
+
+
+-- mesnaje par aenviara 🤍✨ Con mucho amor queremos invitarte a celebrar la próxima llegada de nuestro bebé. 
+Aquí tienes tu invitación especial. 🧸💕 ¡Nos encantará compartir contigo este momento tan bonito! 
+Te esperamos con mucho cariño. 👶🏻🍼
